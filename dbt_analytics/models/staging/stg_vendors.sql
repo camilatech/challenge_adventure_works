@@ -1,10 +1,10 @@
 with source_vendor as(
 	select
-		name,
-		creditrating,
-		preferredvendorstatus ,
-		activeflag,
-		modifieddate	
+		name
+        , creditrating
+        , preferredvendorstatus 
+        , activeflag
+        , modifieddate	
 	from purchasing.vendor
 )
 select *
