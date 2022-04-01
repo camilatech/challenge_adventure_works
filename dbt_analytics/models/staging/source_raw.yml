@@ -21,4 +21,28 @@ sources:
           - name: modifieddate
             description: Date and time the record was last updated
             tests:
+              - not_null      
+      - name: vendor
+        description: Table that contains companies from whom Adventure Works Cycles purchases parts or other goods
+        columns:
+          - name: name
+            description: Name of the company
+            tests:
+              - unique
+              - not_null
+          - name: creditrating
+            description: 	Credit rating of the company
+            tests:
+              - not_null
+          - name: prefferedvendorstatus
+            description: Column that indicates if a vendor is preffered if it is avaliable over another
+            tests:
+              - not_null
+          - name: activeflag
+            description: 	Column that indicates if a vendor is used or not
+            tests:
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated
+            tests:
               - not_null
