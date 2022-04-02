@@ -1,6 +1,6 @@
 with source_vendor as(
 		select 
-        name as company_name
+        name as vendor_company
 		, case 
 			when cast(creditrating as integer) = 1 then 'Superior'
 			when cast(creditrating as integer) = 2 then 'Excellent'
@@ -16,7 +16,7 @@ with source_vendor as(
 			when cast(activeflag as integer) = 0 then 'NotActive' 
 			when cast(activeflag as integer) = 1 then 'Active'
 		end as vendor_active_used
-		, cast(modifieddate	as date)
+		, cast(modifieddate	as date) as modifieddate
 	from {{ source('analytics', 'vendor')}}
 )
 select *
