@@ -16,7 +16,7 @@ with source_vendor as(
 			when cast(activeflag as integer) = 0 then 'NotActive' 
 			when cast(activeflag as integer) = 1 then 'Active'
 		end as vendor_active_used
-		, cast(modifieddate	as date) as modifieddate
+		, cast(modifieddate	as date) as modified_date
 	from {{ source('analytics', 'vendor')}}
 )
 select *
