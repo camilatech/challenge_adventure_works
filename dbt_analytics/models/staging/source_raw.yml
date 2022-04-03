@@ -45,6 +45,7 @@ sources:
           - name: modifieddate
             description: Date and time the record was last updated
             tests:
+             - not_null
       - name: shipmethod
         description: Table that contain the shipping companies
         columns:
@@ -65,3 +66,82 @@ sources:
             description: 	Primary key for ShipMethod records
             tests:
               - not_null
+      - name: purchaseorderheader
+        description: Table that contain general purchase order information
+        columns:
+          - name: status
+            description: 	Order current status
+            tests:
+              - not_null
+          - name: taxamount
+            description: 	Tax amount from the purchase order
+            tests:
+              - not_null
+          - name: subtotal
+            description: Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.
+            tests:
+              - not_null
+          - name: vendorid
+            description: Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.
+            tests:
+              - not_null
+          - name: employeeid
+            description: 	Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.
+            tests:
+              - not_null
+          - name: shipmethodid
+            description: 	Shipping method. Foreign key to ShipMethod.ShipMethodID
+            tests:
+              - not_null
+          - name: orderdate
+            description: 	Purchase order creation date
+            tests:
+              - not_null
+          - name: shipdate
+            description: 	Estimated shipment date from the vendor
+            tests:
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated
+            tests:
+             - not_null
+
+      - name: purchaseorderdetail
+        description: Individual products associated with a specific purchase order
+        columns:
+          - name: PurchaseOrderID
+            description: 	primary key
+            tests:
+              - not_null
+          - name: taxamount
+            description: 	Tax amount from the purchase order
+            tests:
+              - not_null
+          - name: subtotal
+            description: Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.
+            tests:
+              - not_null
+          - name: vendorid
+            description: Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.
+            tests:
+              - not_null
+          - name: employeeid
+            description: 	Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.
+            tests:
+              - not_null
+          - name: shipmethodid
+            description: 	Shipping method. Foreign key to ShipMethod.ShipMethodID
+            tests:
+              - not_null
+          - name: orderdate
+            description: 	Purchase order creation date
+            tests:
+              - not_null
+          - name: shipdate
+            description: 	Estimated shipment date from the vendor
+            tests:
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated
+            tests:
+             - not_null
