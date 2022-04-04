@@ -3,7 +3,7 @@ version: 2
 
 models:
 
-  - name: dim_ship
+  - name: dim_shippings
 
     description: Dimension table of shipping
 

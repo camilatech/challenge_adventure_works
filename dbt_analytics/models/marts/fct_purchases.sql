@@ -12,7 +12,7 @@ with
         select
             sk_ship
             , ship_method_id as ship_id
-        from {{ref('stg_shipping')}}
+        from {{ref('stg_shippings')}}
     ),
     fk_vendor as(
         select
@@ -38,7 +38,7 @@ with
             , product_id
             , purchase_detail_id
             , sk_ship
-        from {{ref('stg_fct_purchasing')}}
+        from {{ref('stg_purchases')}}
             left join fk_ship
             on fk_ship.ship_id = ship_method_id
     )

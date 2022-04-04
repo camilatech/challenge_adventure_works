@@ -35,8 +35,7 @@ with source_purchase_h as (
 , source_purchase_joined as (
 	select *
 	from source_purchase_o
-	full outer join source_purchase_h
+	left join source_purchase_h
 	on purchase_o_id = purchase_detail_id)
-
 select *
 from source_purchase_joined

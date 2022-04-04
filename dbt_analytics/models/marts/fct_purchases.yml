@@ -3,7 +3,7 @@ version: 2
 
 models:
 
-  - name: fct_purchasing
+  - name: fct_purchases
 
     description: Fact table for Purchasing.
 
