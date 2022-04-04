@@ -1,0 +1,68 @@
+version: 2
+
+
+models:
+
+  - name: dim_ship
+
+    description: Dimension table of shipping
+
+
+    columns:
+
+      - name: sk_ship
+
+        description: Surrogate key of shipping dimension table.
+
+        tests:
+
+          - unique
+
+          - not_null
+
+
+      - name: ship_company
+
+        description: Shipping company name.
+
+        tests:
+
+          - not_null
+
+
+      - name: ship_min_charge
+
+        description: Minimum shipping charge.
+
+        tests:
+
+          - not_null
+
+
+      - name: ship_charge
+
+        description: Shipping charge per pound.
+
+        tests:
+
+          - not_null
+
+
+      - name: ship_method_id
+
+        description: Identification for each shipping method.
+
+        tests:
+
+          - not_null
+
+          - unique
+
+
+      - name: modifieddate
+
+        description: Date and time the record was last updated.
+
+        tests:
+
+          - not_null
