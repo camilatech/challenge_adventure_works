@@ -5,23 +5,7 @@ sources:
     schema: purchasing
     description: >
       Main source of project.
-    tables:
-      - name: purchaseorderdetail
-        description: Table that contains details of the purchase
-        columns:
-          - name: productid
-            description: Product identification number. Foreign key to Product.ProductID.
-            tests:
-              - unique
-              - not_null
-          - name: unitprice
-            description: 	Vendor's selling price of a single product.
-            tests:
-              - not_null
-          - name: modifieddate
-            description: Date and time the record was last updated
-            tests:
-              - not_null      
+    tables:     
       - name: vendor
         description: Table that contains companies from whom Adventure Works Cycles purchases parts or other goods
         columns:
@@ -105,42 +89,42 @@ sources:
             description: Date and time the record was last updated
             tests:
              - not_null
-
+            
       - name: purchaseorderdetail
         description: Individual products associated with a specific purchase order
         columns:
-          - name: PurchaseOrderID
-            description: 	primary key
+          - name: unitprice
+            description: Vendor's selling price of a single product
             tests:
               - not_null
-          - name: taxamount
-            description: 	Tax amount from the purchase order
+          - name: orderqty
+            description: Quantity ordered
             tests:
               - not_null
-          - name: subtotal
-            description: Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.
+          - name: receivedqty
+            description: Quantity actually received from the vendor
             tests:
               - not_null
-          - name: vendorid
-            description: Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.
+          - name: rejectedqty
+            description: Quantity rejected during inspection
             tests:
               - not_null
-          - name: employeeid
-            description: 	Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.
+          - name: stockedqty
+            description: Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.
             tests:
               - not_null
-          - name: shipmethodid
-            description: 	Shipping method. Foreign key to ShipMethod.ShipMethodID
+          - name: purchaseorderid
+            description: Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID
             tests:
               - not_null
-          - name: orderdate
-            description: 	Purchase order creation date
+          - name: purchaseorderdetailid
+            description: Primary key. One line number per purchased product
             tests:
               - not_null
-          - name: shipdate
-            description: 	Estimated shipment date from the vendor
+          - name: duedate
+            description: Date the product is expected to be received.
             tests:
-              - not_null
+             - not_null
           - name: modifieddate
             description: Date and time the record was last updated
             tests:
