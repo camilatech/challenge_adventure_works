@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: analytics
+    schema: humanresources
+    description: Source to complement the project. 
+    tables:     
+      - name: employee
+        description: Table that contains companies employees
+        columns:
+          - name: jobtitle
+            description: Last name of the employees
+            tests:
+              - not_null
+          - name: businessentityid
+            description: Primary key for Employee records. Foreign key to BusinessEntity.BusinessEntityID.
+            tests:
+              - not_null
+

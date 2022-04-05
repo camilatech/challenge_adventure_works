@@ -16,7 +16,7 @@ with source_purchase_h as (
 		, cast(shipdate as date) as ship_date
 		, cast(modifieddate	as date) as modified_date 
 		, cast(purchaseorderid as integer) as purchase_o_id
-	from {{ source('analytics', 'purchaseorderheader')}}
+	from {{ source('purchasing', 'purchaseorderheader')}}
 )
 , source_purchase_o as (
 	select 
@@ -30,13 +30,12 @@ with source_purchase_h as (
 		, cast(productid as integer) as product_id
 		, cast(duedate	as date) as due_date 
 		, cast(modifieddate	as date) as modified_date 
-	from {{ source('analytics', 'purchaseorderheader')}}
+	from {{ source('purchasing', 'purchaseorderheader')}}
 )
 , source_purchase_joined as (
 	select *
 	from source_purchase_o
-	full outer join source_purchase_h
+	left join source_purchase_h
 	on purchase_o_id = purchase_detail_id)
-
 select *
 from source_purchase_joined

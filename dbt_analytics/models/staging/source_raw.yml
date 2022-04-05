@@ -1,10 +1,8 @@
 version: 2
 
 sources:
-  - name: analytics
-    schema: purchasing
-    description: >
-      Main source of project.
+  - name: purchasing
+    description: Main source of project.
     tables:     
       - name: vendor
         description: Table that contains companies from whom Adventure Works Cycles purchases parts or other goods

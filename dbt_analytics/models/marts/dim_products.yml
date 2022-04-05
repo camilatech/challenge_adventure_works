@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: Dimension table of products.
+    columns:
+      - name: sk_products
+        description: Surrogate key of products dimension table.
+        tests:
+          - unique
+          - not_null
+
+      - name: productid
+        description: Product identification number.
+        tests:
+          - unique
+          - not_null
+
+      - name: unitprice
+        description: Vendor's selling price of a single product.
+        tests:
+          - not_null
+
+      - name: modifieddate
+        description: Date and time the record was last updated.
+        tests:
+          - not_null

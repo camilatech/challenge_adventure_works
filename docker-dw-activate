@@ -1,0 +1,4 @@
+sudo docker-compose up -d
+sudo docker start data-warehouse
+psl initdb data-warehouse -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
+sudo dockerd
