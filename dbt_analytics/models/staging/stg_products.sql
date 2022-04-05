@@ -4,7 +4,7 @@ with source_product as(
 		, md5 ( concat (purchaseorderdetail.productid, purchaseorderdetail.unitprice) ) as sk_product
         , round(cast(unitprice as numeric),2) as unitprice
         , cast(modifieddate as date) as modifieddate
-	from {{ source('analytics', 'purchaseorderdetail')}}
+	from {{ source('purchasing', 'purchaseorderdetail')}}
 	)
 select *
 from source_product

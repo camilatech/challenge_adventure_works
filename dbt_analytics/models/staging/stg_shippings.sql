@@ -6,7 +6,7 @@ with shipping as (
         , shiprate as ship_charge
         , shipmethodid as ship_method_id
         , cast(modifieddate as date) as modifieddate
-       from {{ source('analytics', 'shipmethod')}}
+       from {{ source('purchasing', 'shipmethod')}}
 )
 select *
 from shipping
