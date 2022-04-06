@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: dim_employee
+    description: Dimension table for employees.
+    columns:
+     - name: sk_employee
+       description: Surrogate key of products dimension table.
+       tests:
+         - unique
+         - not_null
+
+     - name: firstname
+       description: Employee's first name.
+       tests:
+         - not_null
+
+     - name: lastname
+       description: Employee's last name.
+       tests:
+         - not_null
+
+     - name: jobtitle
+       description: Work title.
+       tests:
+         - not_null
+
+     - name: current_status
+       description: If the employee is active or not.     0 = Inactive, 1 = Active
+       tests:
+
+     - name: employee_id
+       description: Employee's identification.
+       tests:
+         - not_null
+         - unique
+
+     - name: modifieddate
+       description: Date and time the record was last updated.
+       tests:
+         - not_null
