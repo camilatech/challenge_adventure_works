@@ -2,8 +2,7 @@ version: 2
 
 sources:
   - name: production
-    schema: person
-    description: Source to complement the project. 
+    description: source to complement the project production
     tables:
      - name: product
        description: Table that contains information about products

@@ -1,6 +1,7 @@
 with source_vendor as(
 		select 
 			name as vendor_company
+			, businessentityid as vendor_id
 			, md5 ( concat (vendor.name, vendor.creditrating) ) as sk_vendor
 			, case 
 				when cast(creditrating as integer) = 1 then 'Superior'

@@ -1,8 +1,7 @@
 version: 2
 
 sources:
-  - name: analytics
-    schema: humanresources
+  - name: humanresources
     description: Source to complement the project. 
     tables:     
       - name: employee
