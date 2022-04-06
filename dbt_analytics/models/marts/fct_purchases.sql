@@ -69,6 +69,8 @@ with
        on fk_employee.employee_id = purchasing_vendor.employee
    ),
 
+   
+
    purchasing_purchasing as(
        select
            unit_price
