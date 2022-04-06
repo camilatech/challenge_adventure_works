@@ -9,11 +9,17 @@ sources:
         description: Table that contains companies employees
         columns:
           - name: jobtitle
-            description: Last name of the employees
+            description: employees job title
             tests:
               - not_null
           - name: businessentityid
             description: Primary key for Employee records. Foreign key to BusinessEntity.BusinessEntityID.
             tests:
               - not_null
-
+          - name: currentflag
+            description: 0 = Inactive, 1 = Active
+            tests:
+              - not_null
+          - name: ModifiedDate
+            description: 	Date and time the record was last updated.
+              - not_null
