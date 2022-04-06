@@ -5,6 +5,7 @@ with d_shipping as (
         , ship_charge
         , ship_method_id
         , modifieddate
+        , sk_ship
     from {{ ref('stg_shippings') }}
 )
 select *
