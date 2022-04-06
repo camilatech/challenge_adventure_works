@@ -37,8 +37,6 @@ with
            , rejected_qty
            , sk_due_date
            , purchase_status
-           , tax_amount
-           , subtotal
            , vendor_id_p
            , employee_id as employee
            , ship_method_id
@@ -47,11 +45,9 @@ with
            , product_id
            , purchase_detail_id
            , sk_ship
-           , (unit_price*order_qty) as total_item
        from {{ref('stg_purchases')}}
-           left join fk_ship
-           on fk_ship.ship_id = ship_method_id
-
+        left join fk_ship
+        on fk_ship.ship_id = ship_method_id
    ),
 
    purchasing_vendor as(
@@ -67,14 +63,6 @@ with
        left join fk_employee
        on fk_employee.employee_id = purchasing_vendor.employee
    ),
-    purchasing_date as(
-        select * 
-        from purchasing_vendor
-        left join fk_employee
-        on fk_employee.employee_id = purchasing_vendor.employee
-
-   ),  
-
    purchasing_purchasing as(
        select
            unit_price
@@ -83,23 +71,18 @@ with
            , rejected_qty
            , sk_due_date
            , purchase_status
-           -- , tax_amount
-           -- , subtotal
-           -- , vendor_id
-           -- , employee_id as employee
-           -- , ship_method_id
            , sk_order_date
            , sk_ship_date
            , product_id
            , purchase_detail_id
-           , (unit_price*order_qty) as total_item
            , sk_ship
            , sk_vendor
            , sk_employee
        from purchasing_employee
    ),
    purchasing_final as(
-       select * from purchasing_purchasing
+       select * 
+       from purchasing_purchasing
        left join fk_products
        on fk_products.productid = purchasing_purchasing.product_id
    ), 
@@ -113,13 +96,13 @@ with
         , purchase_status
         , sk_order_date
         , sk_ship_date
-        , purchase_detail_id
         , (unit_price*order_qty) as total_item
+        , purchase_detail_id
         , sk_ship
         , sk_vendor
         , sk_employee
         , sk_product
     from purchasing_final)
-select *
+select distinct *
 from purchasing_final_select
 

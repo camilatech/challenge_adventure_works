@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: production
+  - name: dw_purchasing
     description: source to complement the project production
     tables:
      - name: product
