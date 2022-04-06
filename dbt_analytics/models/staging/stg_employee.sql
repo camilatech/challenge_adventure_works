@@ -6,7 +6,7 @@ with source_employee as(
             when cast(currentflag as integer) = 1 then 'Active'
            end as current_status
        , businessentityid as employee_id
-       , cast(modifieddate as date)
+       , cast(modifieddate as timestamp)
     from {{ source('humanresources', 'employee')}}
     ),
    source_person as(

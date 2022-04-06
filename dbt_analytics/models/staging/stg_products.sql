@@ -6,7 +6,7 @@ with source_product as(
             when cast(makeflag as integer) = 0 then 'Purchased'
             when cast(makeflag as integer) = 1 then 'Manufactured'
             end as purchased
-       , cast(modifieddate as date)
+       , cast(modifieddate as timestamp)
     from {{ source('production', 'product')}}
     )
 select *
