@@ -39,7 +39,7 @@ with
            , purchase_status
            , tax_amount
            , subtotal
-           , vendor_id
+           , vendor_id_p
            , employee_id as employee
            , ship_method_id
            , sk_order_date
@@ -58,7 +58,7 @@ with
        select * 
        from purchasing
        left join fk_vendor
-       on fk_vendor.vendor_id = purchasing.vendor_id
+       on fk_vendor.vendor_id = purchasing.vendor_id_p
    ),
 
    purchasing_employee as(
@@ -111,14 +111,8 @@ with
         , rejected_qty
         , sk_due_date
         , purchase_status
-        -- , tax_amount
-        -- , subtotal
-        -- , vendor_id
-        -- , employee_id as employee
-        -- , ship_method_id
         , sk_order_date
         , sk_ship_date
-        , product_id
         , purchase_detail_id
         , (unit_price*order_qty) as total_item
         , sk_ship

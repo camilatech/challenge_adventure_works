@@ -9,7 +9,7 @@ with source_purchase_h as (
       end as purchase_status
       , round(cast(taxamt as numeric),2) as tax_amount
       , round(cast(subtotal as numeric),2) as subtotal
-      , cast(vendorid as integer) as vendor_id
+      , cast(vendorid as integer) as vendor_id_p
       , cast(employeeid as integer) as employee_id
       , cast(shipmethodid as integer) as ship_method_id
       , cast(orderdate as date) as order_date
