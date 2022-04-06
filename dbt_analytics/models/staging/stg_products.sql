@@ -1,10 +1,13 @@
 with source_product as(
-	select 
-		cast(productid as integer) as productid
-		, md5 ( concat (purchaseorderdetail.productid, purchaseorderdetail.unitprice) ) as sk_product
-        , round(cast(unitprice as numeric),2) as unitprice
-        , cast(modifieddate as date) as modifieddate
-	from {{ source('purchasing', 'purchaseorderdetail')}}
-	)
+    select
+        md5 ( concat (productid, makeflag) ) as sk_product
+        , cast(productid as integer)
+        , case
+            when cast(makeflag as integer) = 0 then 'Purchased'
+            when cast(makeflag as integer) = 1 then 'Manufactured'
+            end as purchased
+       , cast(modifieddate as date)
+    from {{ source('production', 'product')}}
+    )
 select *
 from source_product

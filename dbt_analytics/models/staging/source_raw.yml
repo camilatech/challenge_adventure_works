@@ -87,7 +87,6 @@ sources:
             description: Date and time the record was last updated
             tests:
              - not_null
-            
       - name: purchaseorderdetail
         description: Individual products associated with a specific purchase order
         columns:

@@ -1,9 +1,11 @@
 with d_product as(
-	select 
-		productid
-        , unitprice
-        , modifieddate
-	from {{ ref('stg_products') }}
-	)
+    select
+       sk_product
+       , productid
+       , purchased
+       , modifieddate
+   from {{ ref('stg_products') }}
+   )
 select *
-from d_product
+   from d_product
+

@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: production
+    description: source to complement the project production
+    tables:
+     - name: product
+       description: Table that contains information about products
+       columns:
+         - name: productid
+           description: Product Identification
+           tests:
+             - not_null
+             - unique
+         - name: makeflag
+           description: If the product is purchased or manufactured.
+         - name: modifieddate
+           description: Date and time the record was last updated.
+           tests:
+             - not_null
