@@ -23,30 +23,27 @@ with
            , vendor_id
        from {{ref('stg_vendors')}}
    ),
-
    fk_employee as (
        select
            sk_employee
            , employee_id
        from {{ref('stg_employee')}}
    ),
-
-
    purchasing as (
        select
            unit_price
            , order_qty
            , received_qty
            , rejected_qty
-           , due_date
+           , sk_due_date
            , purchase_status
            , tax_amount
            , subtotal
            , vendor_id
            , employee_id as employee
            , ship_method_id
-           , order_date
-           , ship_date
+           , sk_order_date
+           , sk_ship_date
            , product_id
            , purchase_detail_id
            , sk_ship
@@ -58,18 +55,25 @@ with
    ),
 
    purchasing_vendor as(
-       select * from purchasing
+       select * 
+       from purchasing
        left join fk_vendor
        on fk_vendor.vendor_id = purchasing.vendor_id
    ),
 
    purchasing_employee as(
-       select * from purchasing_vendor
+       select * 
+       from purchasing_vendor
        left join fk_employee
        on fk_employee.employee_id = purchasing_vendor.employee
    ),
+    purchasing_date as(
+        select * 
+        from purchasing_vendor
+        left join fk_employee
+        on fk_employee.employee_id = purchasing_vendor.employee
 
-   
+   ),  
 
    purchasing_purchasing as(
        select
@@ -77,15 +81,15 @@ with
            , order_qty
            , received_qty
            , rejected_qty
-           , due_date
+           , sk_due_date
            , purchase_status
            -- , tax_amount
            -- , subtotal
            -- , vendor_id
            -- , employee_id as employee
            -- , ship_method_id
-           , order_date
-           , ship_date
+           , sk_order_date
+           , sk_ship_date
            , product_id
            , purchase_detail_id
            , (unit_price*order_qty) as total_item
@@ -94,32 +98,34 @@ with
            , sk_employee
        from purchasing_employee
    ),
-
    purchasing_final as(
        select * from purchasing_purchasing
        left join fk_products
        on fk_products.productid = purchasing_purchasing.product_id
-   )
+   ), 
+   purchasing_final_select as(
+    select
+        unit_price
+        , order_qty
+        , received_qty
+        , rejected_qty
+        , sk_due_date
+        , purchase_status
+        -- , tax_amount
+        -- , subtotal
+        -- , vendor_id
+        -- , employee_id as employee
+        -- , ship_method_id
+        , sk_order_date
+        , sk_ship_date
+        , product_id
+        , purchase_detail_id
+        , (unit_price*order_qty) as total_item
+        , sk_ship
+        , sk_vendor
+        , sk_employee
+        , sk_product
+    from purchasing_final)
+select *
+from purchasing_final_select
 
-   select
-       unit_price
-           , order_qty
-           , received_qty
-           , rejected_qty
-           , due_date
-           , purchase_status
-           -- , tax_amount
-           -- , subtotal
-           -- , vendor_id
-           -- , employee_id as employee
-           -- , ship_method_id
-           , order_date
-           , ship_date
-           , product_id
-           , purchase_detail_id
-           , (unit_price*order_qty) as total_item
-           , sk_ship
-           , sk_vendor
-           , sk_employee
-           , sk_product
-   from purchasing_final
