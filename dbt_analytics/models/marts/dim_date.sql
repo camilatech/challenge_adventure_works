@@ -33,5 +33,3 @@ select
     , is_week_day
 from extract_from_date
 order by full_date
-
-
