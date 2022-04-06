@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: purchasing
+  - name: dw_purchasing
     description: Main source of project.
     tables:     
       - name: vendor

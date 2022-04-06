@@ -19,7 +19,7 @@ with source_vendor as(
 				when cast(activeflag as integer) = 1 then 'Active'
 			end as vendor_active_used
 			, cast(modifieddate	as timestamp) as modified_date
-		from {{ source('purchasing', 'vendor')}}
+		from {{ source('dw_purchasing', 'vendor')}}
 )
 select *
 from source_vendor

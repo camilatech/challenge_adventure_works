@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: person
+  - name: dw_purchasing
     description: Source to complement the project. 
     tables:     
       - name: person

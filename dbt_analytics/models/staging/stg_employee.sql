@@ -6,21 +6,21 @@ with source_employee as(
             when cast(currentflag as integer) = 1 then 'Active'
            end as current_status
        , businessentityid as employee_id
-       , cast(modifieddate as timestamp)
-    from {{ source('humanresources', 'employee')}}
+       , cast(modifieddate as timestamp) as modifieddate
+    from {{ source('dw_purchasing', 'employee')}}
     ),
    source_person as(
     select
         lastname
        , firstname
        , businessentityid as id_person
-    from {{ source('person', 'person')}}
+    from {{ source('dw_purchasing', 'person')}}
     ),
    source_purchase_employee as(
    select
        employeeid
        , purchaseorderid
-   from {{ source('purchasing', 'purchaseorderheader')}}
+   from {{ source('dw_purchasing', 'purchaseorderheader')}}
    ),
    employee_person as (
    select * from source_employee

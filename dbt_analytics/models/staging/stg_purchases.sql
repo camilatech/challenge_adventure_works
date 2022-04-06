@@ -22,7 +22,7 @@ with source_purchase_h as (
       , {{ dbt_utils.surrogate_key([
          'shipdate'
          ]) }} as sk_ship_date
-   from purchasing.purchaseorderheader p
+   from {{ source('dw_purchasing', 'purchaseorderheader')}}
 ) , 
    source_purchase_o as (
       select 
@@ -37,7 +37,7 @@ with source_purchase_h as (
          , {{ dbt_utils.surrogate_key([
             'duedate'
             ]) }} as sk_due_date
-      from purchasing.purchaseorderdetail
+      from {{ source('dw_purchasing', 'purchaseorderdetail')}}
    ) , 
    source_purchase_joined as (
       select *
