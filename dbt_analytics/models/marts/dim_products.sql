@@ -3,7 +3,6 @@ with d_product as(
        sk_product
        , productid
        , purchased
-       , modifieddate
        , product_name
    from {{ ref('stg_products') }}
    )

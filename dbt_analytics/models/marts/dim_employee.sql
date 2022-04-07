@@ -6,7 +6,6 @@ with d_employee as(
        , jobtitle
        , current_status
        , employee_id
-       , modifieddate
    from {{ ref('stg_employee') }}
    )
 
