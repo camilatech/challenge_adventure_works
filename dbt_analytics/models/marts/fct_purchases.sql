@@ -33,18 +33,19 @@ with
        select
            unit_price
            , order_qty
+           , total_item
            , received_qty
            , rejected_qty
-           , sk_due_date
-           , due_date
            , purchase_status
            , vendor_id_p
            , employee_id as employee
            , ship_method_id
-           , order_date
            , sk_order_date
-           , ship_date
+           , order_date_full
+           , order_date
            , sk_ship_date
+           , ship_date_full
+           , ship_date
            , product_id
            , purchase_detail_id
            , sk_ship
@@ -70,15 +71,16 @@ with
        select
            unit_price
            , order_qty
+           , total_item
            , received_qty
            , rejected_qty
-           , sk_due_date
-           , due_date
            , purchase_status
            , sk_order_date
+           , order_date_full
            , order_date
-           , ship_date
            , sk_ship_date
+           , ship_date_full
+           , ship_date
            , product_id
            , purchase_detail_id
            , sk_ship
@@ -98,14 +100,14 @@ with
         , order_qty
         , received_qty
         , rejected_qty
-        , sk_due_date
-        , due_date
         , purchase_status
         , sk_order_date
+        , order_date_full
         , order_date
         , sk_ship_date
+        , ship_date_full
         , ship_date
-        , (unit_price*order_qty) as total_item
+        , total_item
         , purchase_detail_id
         , sk_ship
         , sk_vendor
