@@ -1,6 +1,4 @@
-
 {{ config(materialized='table') }}
-
 
 with
     fk_products as(
@@ -8,28 +6,26 @@ with
            productid
            , sk_product
        from {{ref('stg_products')}}
-   ),
-
-   fk_ship as(
+   )
+   , fk_ship as(
        select
            sk_ship
            , ship_method_id as ship_id
        from {{ref('stg_shippings')}}
-   ),
-
-   fk_vendor as(
+   )
+   , fk_vendor as(
        select
            sk_vendor
            , vendor_id
        from {{ref('stg_vendors')}}
-   ),
-   fk_employee as (
+   )
+   , fk_employee as (
        select
            sk_employee
            , employee_id
        from {{ref('stg_employee')}}
-   ),
-   purchasing as (
+   )
+   , purchasing as (
        select
            unit_price
            , order_qty
@@ -52,22 +48,20 @@ with
        from {{ref('stg_purchases')}}
         left join fk_ship
         on fk_ship.ship_id = ship_method_id
-   ),
-
-   purchasing_vendor as(
+   )
+   , purchasing_vendor as(
        select * 
        from purchasing
        left join fk_vendor
        on fk_vendor.vendor_id = purchasing.vendor_id_p
-   ),
-
-   purchasing_employee as(
+   )
+   , purchasing_employee as(
        select * 
        from purchasing_vendor
        left join fk_employee
        on fk_employee.employee_id = purchasing_vendor.employee
-   ),
-   purchasing_purchasing as(
+   )
+   , purchasing_purchasing as(
        select
            unit_price
            , order_qty
@@ -87,33 +81,33 @@ with
            , sk_vendor
            , sk_employee
        from purchasing_employee
-   ),
-   purchasing_final as(
+   )
+   , purchasing_final as(
        select * 
        from purchasing_purchasing
        left join fk_products
        on fk_products.productid = purchasing_purchasing.product_id
-   ), 
-   purchasing_final_select as(
-    select
-        unit_price
-        , order_qty
-        , received_qty
-        , rejected_qty
-        , purchase_status
-        , sk_order_date
-        , order_date_full
-        , order_date
-        , sk_ship_date
-        , ship_date_full
-        , ship_date
-        , total_item
-        , purchase_detail_id
-        , sk_ship
-        , sk_vendor
-        , sk_employee
-        , sk_product
-    from purchasing_final)
+   )
+   , purchasing_final_select as(
+        select
+            unit_price
+            , order_qty
+            , received_qty
+            , rejected_qty
+            , purchase_status
+            , sk_order_date
+            , order_date_full
+            , order_date
+            , sk_ship_date
+            , ship_date_full
+            , ship_date
+            , total_item
+            , purchase_detail_id
+            , sk_ship
+            , sk_vendor
+            , sk_employee
+            , sk_product
+        from purchasing_final)
 select distinct *
 from purchasing_final_select
 

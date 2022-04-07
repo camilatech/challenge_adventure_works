@@ -7,5 +7,5 @@ with d_product as(
    from {{ ref('stg_products') }}
    )
 select *
-   from d_product
+from d_product
 

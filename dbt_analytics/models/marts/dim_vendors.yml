@@ -1,71 +1,39 @@
 version: 2
 
-
 models:
 
   - name: dim_vendors
-
     description: Dimension table of vendors
-
-
     columns:
-
       - name: sk_vendor
-
         description: Surrogate key of vendor dimension table.
-
         tests:
-
           - unique
-
           - not_null
 
-
-      - name: vendor_company
-
+      - name: company_name
         description: Company name.
-
         tests:
-
           - unique
-
           - not_null
-
 
       - name: credit_rating
-
         description: Credit rating for each company. Rating = (1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average).
-
         tests:
-
           - not_null
-
           - accepted_values:
-
               values: [1, 2, 3, 4, 5]
 
-
       - name: preffered_vendor
-
         description: The preffered vendors. Rating = (0 = Preferred over other vendors supplying the same product, 1 = Do not use if another vendor is available.)
-
         tests:
-
           - not_null
-
           - accepted_values:
-
               values: [0, 1]
 
-
       - name: vendor_active_used
-
         description: If the vendor is still used or not. Rating =	(0 = Vendor no longer used, 1 = Vendor is actively used.)
-
         tests:
-
           - not_null
-
           - accepted_values:
-
               values: [0, 1]
