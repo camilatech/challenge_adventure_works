@@ -11,8 +11,9 @@ with source_employee as(
     ),
    source_person as(
     select
-        lastname
-       , firstname
+        firstname
+       , lastname
+       , CONCAT(firstname, ' ', lastname) AS full_name
        , businessentityid as id_person
     from {{ source('dw_purchasing', 'person')}}
     ),
@@ -29,8 +30,7 @@ with source_employee as(
    )
    select
        md5 ( concat (firstname, lastname) ) as sk_employee
-       , firstname
-       , lastname
+       , full_name
        , jobtitle
        , current_status
        , employee_id

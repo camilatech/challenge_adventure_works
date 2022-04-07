@@ -22,18 +22,35 @@ models:
      - name: rejected_qty
        description: Quantity rejected during inspection.
 
-     - name: due_date
-       description: Date the product is expected to be received.
-       tests:
-         - not_null
-
      - name: purchase_status
        description: Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete
        tests:
          - not_null
 
+     - name: sk_order_date
+       description: Surrogate key for the purchase order creation date.
+       tests:
+         - not_null
+         - unique
+
+     - name: order_date_full
+       description: Purchase order creation date with the time.
+       tests:
+         - not_null
+
      - name: order_date
        description: Purchase order creation date.
+       tests:
+         - not_null
+
+     - name: sk_ship_date
+       description: Surrogate key for the purchase ship creation date.
+       tests:
+         - not_null
+         - unique
+
+     - name: ship_date_full
+       description: Estimated shipment date from the vendor with the time.
        tests:
          - not_null
 
@@ -52,32 +69,28 @@ models:
        tests:
          - not_null
 
-     - name: fk_ship
-       description: Foreign key from ship dimension table.
+     - name: sk_ship
+       description: Surrogate key from ship dimension table.
        tests:
          - unique
          - not_null
 
-     - name: fk_vendors
-       description: Foreign key from vendors dimension table.
+     - name: sk_vendors
+       description: Surrogate key from vendors dimension table.
        tests:
          - unique
          - not_null
 
-     - name: fk_employee
-       description: Foreign key from employess dimension table.
+     - name: sk_employee
+       description: Surrogate key from employess dimension table.
        tests:
          - unique
          - not_null
 
-     - name: fk_products
-       description: Foreign key from products dimension table.
+     - name: sk_products
+       description: Surrogate key from products dimension table.
        tests:
          - unique
          - not_null
       
-     - name: fk_date
-       description: Foreign key from date dimension table.
-       tests:
-          - unique
-          - not_null
+

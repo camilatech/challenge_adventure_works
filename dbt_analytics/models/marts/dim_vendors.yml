@@ -69,12 +69,3 @@ models:
           - accepted_values:
 
               values: [0, 1]
-
-
-      - name: modifieddate
-
-        description: Date and time the record was last updated.
-
-        tests:
-
-          - not_null

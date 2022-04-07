@@ -57,12 +57,3 @@ models:
           - not_null
 
           - unique
-
-
-      - name: modifieddate
-
-        description: Date and time the record was last updated.
-
-        tests:
-
-          - not_null
