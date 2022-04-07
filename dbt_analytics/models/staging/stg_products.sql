@@ -2,6 +2,7 @@ with source_product as(
     select
         md5 ( concat (productid, makeflag) ) as sk_product
         , cast(productid as integer) as productid
+        , name as product_name
         , case
             when cast(makeflag as integer) = 0 then 'Purchased'
             when cast(makeflag as integer) = 1 then 'Manufactured'

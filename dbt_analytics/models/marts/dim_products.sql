@@ -4,6 +4,7 @@ with d_product as(
        , productid
        , purchased
        , modifieddate
+       , product_name
    from {{ ref('stg_products') }}
    )
 select *
