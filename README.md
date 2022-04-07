@@ -14,7 +14,7 @@ Para isso, dividiu-se o projeto em 5 etapas:
 
 4. Transformação de dados: os dados brutos, extraídos na etapa 3, foram transformados com o dbt para atender ao diagrama conceitual criado na etapa 1;
 
-5. Criação do painel de Business Inteligence (BI): elaboração da visualização de dados. Dashboard através do Qlik Sense.
+5. Criação do painel de Business Inteligence (BI): elaboração da visualização de dados. Dashboard através do Qlik Cloud.
 
 ## Arquivos:
 
@@ -87,10 +87,11 @@ dbt run
 Depois disso, você terá uma nova pasta no BigQuery com os dados transformados.
 
 ## Analytics
-### Qlik
+### Qlik Cloud
 Utilizamos o Qlik Cloud para esse desafio e por lá conseguimos fazer a conexão direta com o BigQuery. Com isso, conseguimos produzir o seguinte relatório:
 
 
 ## Autores do projeto:
 Camila Bosa Custódio e Gabriel Lajús Maccarini
+
 Inspirado no Airbyte_Tooltorial

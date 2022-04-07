@@ -1,6 +1,6 @@
 with source_vendor as(
 		select 
-			name as vendor_company
+			name as company_name
 			, businessentityid as vendor_id
 			, md5 ( concat (vendor.name, vendor.creditrating) ) as sk_vendor
 			, case 

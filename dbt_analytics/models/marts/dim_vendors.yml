@@ -11,7 +11,7 @@ models:
           - unique
           - not_null
 
-      - name: vendor_company
+      - name: company_name
         description: Company name.
         tests:
           - unique
