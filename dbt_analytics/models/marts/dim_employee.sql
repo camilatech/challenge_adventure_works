@@ -1,8 +1,7 @@
 with d_employee as(
     select
-       md5 ( concat (firstname, lastname) ) as sk_employee
-       , firstname
-       , lastname
+       sk_employee
+       , full_name
        , jobtitle
        , current_status
        , employee_id

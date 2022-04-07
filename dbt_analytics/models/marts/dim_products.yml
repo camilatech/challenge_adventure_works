@@ -21,7 +21,7 @@ models:
        tests:
          - not_null
 
-     - name: modifieddate
-       description: Date and time the record was last updated.
+     - name: productname
+       description: Name of the product
        tests:
          - not_null

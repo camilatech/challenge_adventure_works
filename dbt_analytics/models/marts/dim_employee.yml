@@ -10,13 +10,8 @@ models:
          - unique
          - not_null
 
-     - name: firstname
-       description: Employee's first name.
-       tests:
-         - not_null
-
-     - name: lastname
-       description: Employee's last name.
+     - name: fullname
+       description: Employee's full name.
        tests:
          - not_null
 
@@ -34,8 +29,3 @@ models:
        tests:
          - not_null
          - unique
-
-     - name: modifieddate
-       description: Date and time the record was last updated.
-       tests:
-         - not_null
