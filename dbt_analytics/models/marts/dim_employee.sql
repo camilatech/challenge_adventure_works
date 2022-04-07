@@ -7,6 +7,5 @@ with d_employee as(
        , employee_id
    from {{ ref('stg_employee') }}
    )
-
 select *
 from d_employee
